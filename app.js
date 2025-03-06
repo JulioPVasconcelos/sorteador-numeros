@@ -5,6 +5,23 @@ function sortear() {
   let numerosSorteados = [];
   let numeroSorteado;
 
+  if (
+    isNaN(quantidade) ||
+    isNaN(limiteDe) ||
+    isNaN(limiteAte) ||
+    quantidade <= 0 ||
+    limiteDe < 0 ||
+    limiteAte < 0 ||
+    limiteDe > limiteAte ||
+    quantidade > limiteAte - limiteDe + 1
+  ) {
+    alert("Por favor, insira valores válidos.");
+    reiniciar();
+    let botao = document.getElementById("btn-reiniciar");
+    botao.classList.add("container__botao-desabilitado");
+    return;
+  }
+
   for (let i = 0; i < quantidade; i++) {
     numeroSorteado = obterNumeroAleatorio(limiteDe, limiteAte);
     while (numerosSorteados.includes(numeroSorteado)) {
